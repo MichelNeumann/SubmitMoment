@@ -20,12 +20,15 @@
         .header {
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 1rem;
             background-color: #f8f9fa;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .back-button {
+            position: absolute;
+            left: 1rem;
             background: none;
             border: none;
             font-size: 1.5rem;
@@ -33,6 +36,7 @@
             margin-right: 1rem;
             color: #333;
         }
+
 
         .title {
             font-size: 1.2rem;
@@ -44,7 +48,7 @@
 </head>
 <body>
 <header class="header">
-    <button class="back-button">←</button>
+    <button class="back-button" onclick="swapPageBack()">←</button>
     <div class="title">Welcome to Submit Moment</div>
 </header>
 
@@ -94,6 +98,16 @@
         });
     });
 </script>
-<script src="chat.js"></script>
+<script src="chat.js">
+
+    function swapPageProg() {
+        window.location.href = 'prog.html';
+        console.log("HELLO!");
+    }
+
+    function swapPageBack() {
+        window.location.href = 'uebersicht.html';
+    }
+</script>
 </body>
 </html>
