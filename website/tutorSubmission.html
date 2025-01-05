@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor View - Submit Moment</title>
+    <link rel="stylesheet" href="chat.css">
+    <style>
+        {
+            margin: 0
+        ;
+            padding: 0
+        ;
+            box-sizing: border-box
+        ;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-right: 1rem;
+            color: #333;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .tutor-badge {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .groups-list {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .group {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .group-name {
+            font-weight: 500;
+        }
+
+        .group-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-submitted {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .status-graded {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .members-list {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .download-button, .upload-button {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .download-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .upload-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .upload-button:hover {
+            background-color: #218838;
+        }
+
+        .button-disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .button-disabled:hover {
+            background-color: #6c757d;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .deadline {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <button class="back-button">←</button>
+    <div class="title">
+        Submit Moment
+        <span class="tutor-badge">Tutor</span>
+    </div>
+</header>
+
+<main class="content">
+    <div class="groups-list">
+        <div class="section-title">
+            <span>Übungsblatt 3: Funktionen und Module</span>
+            <span class="deadline">Deadline: 29. April 2025</span>
+        </div>
+
+        <div class="group">
+            <div class="group-header">
+                <span class="group-name">Gruppe 1</span>
+                <span class="group-status status-graded">Bewertet</span>
+            </div>
+            <div class="members-list">
+                Max Mustermann, Anna Schmidt, Tom Weber
+            </div>
+            <div class="button-container">
+                <button class="download-button">Abgabe herunterladen</button>
+                <span class="upload-button button-disabled">Korrektur bereits hochgeladen</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-header">
+                <span class="group-name">Gruppe 2</span>
+                <span class="group-status status-submitted">Eingereicht</span>
+            </div>
+            <div class="members-list">
+                Laura Müller, Felix Klein, Sarah Wagner
+            </div>
+            <div class="button-container">
+                <button class="download-button">Abgabe herunterladen</button>
+                <label class="upload-button" for="correction-upload-2">
+                    Korrektur hochladen
+                </label>
+                <input type="file" id="correction-upload-2" accept=".zip,.pdf"
+                       onchange="handleCorrectionUpload(this, 2)">
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-header">
+                <span class="group-name">Gruppe 3</span>
+                <span class="group-status status-pending">Ausstehend</span>
+            </div>
+            <div class="members-list">
+                Jan Schmidt, Marie Weber, Tim Meyer
+            </div>
+            <div class="button-container">
+                <button class="download-button button-disabled">Keine Abgabe vorhanden</button>
+                <span class="upload-button button-disabled">Warte auf Abgabe</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<button class="chat-toggle">↑</button>
+<div class="chat-window">
+    <div class="chat-header">Chat Michael Moment</div>
+    <div class="chat-content"></div>
+    <div class="chat-input">
+        <input type="text" placeholder="Nachricht eingeben...">
+        <button>Senden</button>
+    </div>
+</div>
+
+<script src="chat.js">
+    document.querySelector('.back-button').addEventListener('click', () => {
+        history.back();
+    });
+
+    document.querySelectorAll('.download-button:not(.button-disabled)').forEach(button => {
+        button.addEventListener('click', function () {
+            const groupName = this.closest('.group').querySelector('.group-name').textContent;
+            alert(`Lade Abgabe von ${groupName} herunter...`);
+        });
+    });
+
+    function handleCorrectionUpload(input, groupId) {
+        if (input.files && input.files[0]) {
+            const group = input.closest('.group');
+            const statusBadge = group.querySelector('.group-status');
+            const uploadButton = group.querySelector('.upload-button');
+
+            statusBadge.className = 'group-status status-graded';
+            statusBadge.textContent = 'Bewertet';
+
+            uploadButton.className = 'upload-button button-disabled';
+            uploadButton.textContent = 'Korrektur bereits hochgeladen';
+
+            uploadButton.onclick = function (e) {
+                e.preventDefault();
+            };
+
+            alert('Korrektur erfolgreich hochgeladen!');
+        }
+    }
+</script>
+</body>
+</html>

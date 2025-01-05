@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gruppenabgabe - Submit Moment</title>
+    <link rel="stylesheet" href="chat.css">
+    <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-right: 1rem;
+            color: #333;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .group-progress {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+
+        .students-list {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .student {
+            margin-bottom: 1.5rem;
+        }
+
+        .student:last-child {
+            margin-bottom: 0;
+        }
+
+        .student-name {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .current-user {
+            background-color: #e8f5e9;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .you-badge {
+            background-color: #28a745;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .upload-button, .download-button {
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upload-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .upload-button:hover {
+            background-color: #0056b3;
+        }
+
+        .download-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .download-button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .download-button:not(:disabled):hover {
+            background-color: #218838;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <button class="back-button">←</button>
+    <div class="title">Submit Moment</div>
+</header>
+
+<main class="content">
+    <div class="group-progress">
+        <div class="progress-title">Gruppenfortschritt</div>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 66.67%"></div>
+        </div>
+        <small>2 von 3 Abgaben completed</small>
+    </div>
+
+    <div class="students-list">
+        <div class="progress-title">Team Members</div>
+
+        <div class="student current-user">
+            <div class="student-name">
+                Max Mustermann
+                <span class="you-badge">Du</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="user-progress" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="student">
+            <div class="student-name">Anna Schmidt</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </div>
+
+        <div class="student">
+            <div class="student-name">Tom Weber</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <label for="zip-upload" class="upload-button">
+            <span>ZIP hochladen</span>
+        </label>
+        <input type="file" id="zip-upload" accept=".zip" onchange="handleFileUpload(this)">
+
+        <button class="download-button" disabled id="download-button">
+            <span>Bewertung herunterladen</span>
+        </button>
+    </div>
+</main>
+
+
+<button class="chat-toggle">↑</button>
+<div class="chat-window">
+    <div class="chat-header">Chat Michael Moment</div>
+    <div class="chat-content"></div>
+    <div class="chat-input">
+        <input type="text" placeholder="Nachricht eingeben...">
+        <button>Senden</button>
+    </div>
+</div>
+
+
+<script src="chat.js"></script>
+
+<script>
+    // Back button functionality
+    document.querySelector('.back-button').addEventListener('click', () => {
+        history.back();
+    });
+
+    // File upload handling
+    function handleFileUpload(input) {
+        if (input.files && input.files[0]) {
+            document.getElementById('user-progress').style.width = '100%';
+
+            document.querySelector('.group-progress .progress-fill').style.width = '100%';
+            document.querySelector('.group-progress small').textContent = '3 von 3 Abgaben completed';
+
+            alert('ZIP-Datei erfolgreich hochgeladen!');
+        }
+    }
+
+    const hasEvaluation = false;
+    const downloadButton = document.getElementById('download-button');
+    downloadButton.disabled = hasEvaluation;
+
+    if (hasEvaluation) {
+        downloadButton.addEventListener('click', () => {
+            alert('Bewertung wird heruntergeladen...');
+        });
+    }
+</script>
+</body>
+</html>
