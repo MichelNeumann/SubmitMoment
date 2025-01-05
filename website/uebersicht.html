@@ -45,6 +45,16 @@
 
 
     </style>
+    <script >
+
+        function swapPageProg() {
+            window.location.href = 'prog.html';
+        }
+
+        function swapPageBack() {
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
 <header class="header">
@@ -59,7 +69,7 @@
             <a href="#" class="course-link">Mathematik II - Grundlagen der Analysis</a>
         </li>
         <li class="course-item">
-            <a href="#" class="course-link">Programmierung - Einführung in C</a>
+            <a onclick="swapPageProg()" class="course-link">Programmierung - Einführung in C</a>
         </li>
         <li class="course-item">
             <a href="#" class="course-link">Datenbanken - SQL Grundlagen</a>
@@ -86,7 +96,7 @@
     </div>
 </div>
 
-<script>
+<script src = "chat.js">
     document.querySelector('.back-button').addEventListener('click', () => {
         history.back();
     });
@@ -98,16 +108,6 @@
         });
     });
 </script>
-<script src="chat.js">
 
-    function swapPageProg() {
-        window.location.href = 'prog.html';
-        console.log("HELLO!");
-    }
-
-    function swapPageBack() {
-        window.location.href = 'uebersicht.html';
-    }
-</script>
 </body>
 </html>
