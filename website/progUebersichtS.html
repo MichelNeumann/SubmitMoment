@@ -138,10 +138,20 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+
+        function swapPageUebersicht() {
+            window.location.href = 'uebersichtS.html';
+        }
+        function swapPageSubmission() {
+            window.location.href = 'submissionS.html';
+        }
+    </script>
+
 </head>
 <body>
 <header class="header">
-    <button class="back-button" onclick="swapPage()">←</button>
+    <button class="back-button" onclick="swapPageUebersicht()">←</button>
     <div class="title">Submit Moment</div>
 </header>
 
@@ -202,7 +212,7 @@
             <td class="due-date">10. Januar 2025</td>
             <td><span class="status-badge status-pending">Ausstehend</span></td>
             <td><span class="points">-</span> <span class="max-points">/ 10</span></td>
-            <td><a href="#" class="submission-link">Jetzt einreichen</a></td>
+            <td><a onclick="swapPageSubmission()" class="submission-link">Jetzt einreichen</a></td>
         </tr>
         <tr>
             <td>Übungsblatt 7: Richtig testen</td>
@@ -226,9 +236,6 @@
 
 <script src = "chat.js">
 
-    function swapPage() {
-        window.location.href = 'uebersicht.html';
-    }
 </script>
 </body>
 </html>

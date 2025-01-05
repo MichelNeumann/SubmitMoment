@@ -17,20 +17,23 @@
             background-color: #f8f9fa;
         }
 
+
         .header {
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 1rem;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .back-button {
+            position: absolute;
+            left: 1rem;
             background: none;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            margin-right: 1rem;
             color: #333;
         }
 
@@ -38,6 +41,7 @@
             font-size: 1.2rem;
             font-weight: bold;
         }
+
 
         .content {
             max-width: 800px;
@@ -159,10 +163,15 @@
             display: none;
         }
     </style>
+    <script>
+        function swapPageUebersicht() {
+            window.location.href = 'progUebersichtS_TEST.html';
+        }
+    </script>
 </head>
 <body>
 <header class="header">
-    <button class="back-button">←</button>
+    <button class="back-button" onclick="swapPageUebersicht()">←</button>
     <div class="title">Submit Moment</div>
 </header>
 
@@ -230,12 +239,10 @@
 <script src="chat.js"></script>
 
 <script>
-    // Back button functionality
     document.querySelector('.back-button').addEventListener('click', () => {
         history.back();
     });
 
-    // File upload handling
     function handleFileUpload(input) {
         if (input.files && input.files[0]) {
             document.getElementById('user-progress').style.width = '100%';

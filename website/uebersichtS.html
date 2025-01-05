@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Moment</title>
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="uebersicht.css">
+    <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            position: absolute;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-right: 1rem;
+            color: #333;
+        }
+
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+
+    </style>
+    <script >
+
+        function swapPageProg() {
+            window.location.href = 'progUebersichtS.html';
+        }
+
+        function swapPageBack() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+<header class="header">
+    <button class="back-button" onclick="swapPageBack()">←</button>
+    <div class="title">Welcome to Submit Moment</div>
+</header>
+
+<main class="course-overview">
+    <h1>Übersicht: Kurse</h1>
+    <ul class="course-list">
+        <li class="course-item">
+            <a href="#" class="course-link">Mathematik II - Grundlagen der Analysis</a>
+        </li>
+        <li class="course-item">
+            <a onclick="swapPageProg()" class="course-link">Programmierung - Einführung in C</a>
+        </li>
+        <li class="course-item">
+            <a href="#" class="course-link">Datenbanken - SQL Grundlagen</a>
+        </li>
+        <li class="course-item">
+            <a href="#" class="course-link">GMCI - HTML, CSS & JavaScript</a>
+        </li>
+        <li class="course-item">
+            <a href="#" class="course-link">Datenstrukturen und Algorithmen</a>
+        </li>
+        <li class="course-item">
+            <a href="#" class="course-link">Grundlagen der Betriebssysteme</a>
+        </li>
+    </ul>
+</main>
+
+<button class="chat-toggle">↑</button>
+<div class="chat-window">
+    <div class="chat-header">Chat</div>
+    <div class="chat-content"></div>
+    <div class="chat-input">
+        <input type="text" placeholder="Nachricht eingeben...">
+        <button>Senden</button>
+    </div>
+</div>
+
+<script src = "chat.js">
+    document.querySelector('.back-button').addEventListener('click', () => {
+        history.back();
+    });
+
+    document.querySelectorAll('.course-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Kurs wird geladen: ' + e.target.textContent);
+        });
+    });
+</script>
+
+</body>
+</html>
