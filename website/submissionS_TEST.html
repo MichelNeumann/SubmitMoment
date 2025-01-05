@@ -26,15 +26,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .exercise-title {
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #333;
-            margin: 2rem 0 1rem 0;
-            padding: 0 1rem;
-        }
-
         .back-button {
             position: absolute;
             left: 1rem;
@@ -57,6 +48,15 @@
             border-radius: 12px;
             font-size: 0.8rem;
             margin-left: 1rem;
+        }
+
+        .exercise-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin: 2rem 0 1rem 0;
+            padding: 0 1rem;
         }
 
         .content {
@@ -153,12 +153,12 @@
         }
 
         .upload-button {
-            background-color: #007bff;
+            background-color: #6c757d;
             color: white;
         }
 
         .upload-button:hover {
-            background-color: #0056b3;
+            background-color: #6c757d;
         }
 
         .download-button {
@@ -194,16 +194,16 @@
 </header>
 
 <div class="exercise-title">
-    Übungsblatt 6: Pointer Arrays und Hashmaps
+    Übungsblatt 3: Funktionen und Module
 </div>
 
 <main class="content">
     <div class="group-progress">
         <div class="progress-title">Gruppenfortschritt</div>
         <div class="progress-bar">
-            <div class="progress-fill" style="width: 66.67%"></div>
+            <div class="progress-fill" style="width: 100%"></div>
         </div>
-        <small>2 von 3 Abgaben completed</small>
+        <small>3 von 3 Abgaben completed</small>
     </div>
 
     <div class="students-list">
@@ -215,7 +215,7 @@
                 <span class="you-badge">Du</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" id="user-progress" style="width: 0%"></div>
+                <div class="progress-fill" id="user-progress" style="width: 100%"></div>
             </div>
         </div>
 
@@ -235,10 +235,9 @@
     </div>
 
     <div class="button-container">
-        <label for="zip-upload" class="upload-button">
+        <label class="upload-button">
             <span>ZIP hochladen</span>
         </label>
-        <input type="file" id="zip-upload" accept=".zip" onchange="handleFileUpload(this)">
 
         <button class="download-button" disabled id="download-button">
             <span>Bewertung herunterladen</span>
@@ -274,7 +273,7 @@
         }
     }
 
-    const hasEvaluation = false;
+    const hasEvaluation = true;
     const downloadButton = document.getElementById('download-button');
     downloadButton.disabled = !hasEvaluation;
 

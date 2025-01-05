@@ -15,6 +15,7 @@
 
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
         }
 
         .header {
@@ -33,14 +34,22 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            margin-right: 1rem;
             color: #333;
         }
-
 
         .title {
             font-size: 1.2rem;
             font-weight: bold;
+        }
+
+
+        .tutor-badge {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
         }
 
 
@@ -59,7 +68,11 @@
 <body>
 <header class="header">
     <button class="back-button" onclick="swapPageBack()">←</button>
-    <div class="title">Welcome to Submit Moment</div>
+    <div class="title">Welcome to Submit Moment
+        <span class="tutor-badge">Tutor</span>
+    </div>
+
+
 </header>
 
 <main class="course-overview">

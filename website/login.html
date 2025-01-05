@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Moment - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: #dc3545;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="title">Welcome to Submit Moment</div>
+</header>
+
+<div class="login-container">
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">Benutzername</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Passwort</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="login-button">Anmelden</button>
+        <div class="error-message" id="errorMessage">Ungültige Anmeldeinformationen</div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (username === 'Michel') {
+            window.location.href = 'uebersichtS.html';
+        } else if (username === 'Alex') {
+            window.location.href = 'uebersichtT.html';
+        } else {
+            errorMessage.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>
