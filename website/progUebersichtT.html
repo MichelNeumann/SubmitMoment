@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursdetails - Submit Moment</title>
+    <link rel="stylesheet" href="chat.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            position: absolute;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .course-content {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .course-header {
+            margin-bottom: 2rem;
+        }
+
+        .course-header h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .submissions-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .submissions-table th,
+        .submissions-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .submissions-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .submissions-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-submitted {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .status-graded {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-late {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .points {
+            font-weight: 600;
+        }
+
+        .max-points {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .due-date {
+            color: #666;
+        }
+
+        .submission-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .submission-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <button class="back-button" onclick="swapPage()">←</button>
+    <div class="title">Submit Moment</div>
+</header>
+
+<main class="course-content">
+    <div class="course-header">
+        <h1>Programmierung - Einführung in C</h1>
+        <p>Prof. Dr. Rohs | Wintersemester 2024/2025</p>
+    </div>
+
+    <table class="submissions-table">
+        <thead>
+        <tr>
+            <th>Abgabe</th>
+            <th>Fällig bis</th>
+            <th>Aktion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Übungsblatt 1: Grundlagen der Programmierung</td>
+            <td class="due-date">15. November 2024</td>
+            <td><a href="#" class="submission-link">Abgaben ansehen</a></td>
+        </tr>
+        <tr>
+            <td>Übungsblatt 2: Kontrollstrukturen</td>
+            <td class="due-date">22. November 2024</td>
+            <td><a href="#" class="submission-link">Abgaben ansehen</a></td>
+        </tr>
+        <tr>
+            <td>Übungsblatt 3: Funktionen und Module</td>
+            <td class="due-date">29. November 2024</td>
+            <td><a href="#" class="subission-link">Abgaben ansehen</a></td>
+        </tr>
+        <tr>
+            <td>Übungsblatt 4: Objektorientierung</td>
+            <td class="due-date">6. Dezember 2024</td>
+            <td><a href="#" class="submission-link">Abgaben ansehen</a></td>
+        </tr>
+        <tr>
+            <td>Übungsblatt 5: Pointer</td>
+            <td class="due-date">13. Dezember 2024</td>
+            <td><a href="#" class="submission-link">Abgaben ansehen</a></td>
+        </tr>
+        <tr>
+            <td>Übungsblatt 6: Pointer Arrays und Hashmaps</td>
+            <td class="due-date">10. Januar 2025</td>
+            <td><a href="#" class="submission-link">Abgaben ansehen</a></td>
+        </tr>
+        <tr>
+            <td>Übungsblatt 7: Richtig testen</td>
+            <td class="due-date">17. Januar 2025</td>
+            <td><a href="#" class="submission-link">Abgaben ansehen</a></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<button class="chat-toggle">↑</button>
+<div class="chat-window">
+    <div class="chat-header">Chat Michael Moment</div>
+    <div class="chat-content"></div>
+    <div class="chat-input">
+        <input type="text" placeholder="Nachricht eingeben...">
+        <button>Senden</button>
+    </div>
+</div>
+
+<script src = "chat.js">
+
+    function swapPage() {
+        window.location.href = 'uebersicht.html';
+    }
+</script>
+</body>
+</html>
