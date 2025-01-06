@@ -182,7 +182,9 @@
         }
     </script>
 </head>
-<body>
+<body data-page="tutor-submission">
+    <input type="file" id="file-upload" style="display: none;" accept=".pdf, .zip" />
+</body>
 <header class="header">
     <button onclick="swapPageUebersicht()" class="back-button">←</button>
     <div class="title">
@@ -249,12 +251,18 @@
 <button class="chat-toggle">↑</button>
 <div class="chat-window">
     <div class="chat-header">Chat Michael Moment</div>
-    <div class="chat-content"></div>
+    <div class="chat-content">
+        <div id="chat-messages">
+        </div>
+    </div>
+    <div id="chat-options">
+    </div>
     <div class="chat-input">
         <input type="text" placeholder="Nachricht eingeben...">
         <button>Senden</button>
     </div>
 </div>
+
 
 <script src="chat.js">
     document.querySelector('.back-button').addEventListener('click', () => {

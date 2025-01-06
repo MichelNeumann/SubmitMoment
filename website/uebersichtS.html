@@ -65,7 +65,7 @@
         }
     </script>
 </head>
-<body>
+<body data-page="student-overview">
 <header class="header">
     <button class="back-button" onclick="swapPageBack()">←</button>
     <div class="title">Welcome to Submit Moment
@@ -99,13 +99,19 @@
 
 <button class="chat-toggle">↑</button>
 <div class="chat-window">
-    <div class="chat-header">Chat</div>
-    <div class="chat-content"></div>
+    <div class="chat-header">Chat Michael Moment</div>
+    <div class="chat-content">
+        <div id="chat-messages">
+        </div>
+    </div>
+    <div id="chat-options">
+    </div>
     <div class="chat-input">
         <input type="text" placeholder="Nachricht eingeben...">
         <button>Senden</button>
     </div>
 </div>
+
 
 <script src = "chat.js">
     document.querySelector('.back-button').addEventListener('click', () => {
