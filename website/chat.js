@@ -117,11 +117,14 @@ const chatDataByPage = {
             if (existingButton) {
                 existingButton.remove();
             }
+            document.getElementById('user-progress').style.width = '100%';
 
+            document.querySelector('.group-progress .progress-fill').style.width = '100%';
+            document.querySelector('.group-progress small').textContent = '3 von 3 Abgaben completed';
             const button = document.createElement("button");
             button.textContent = "Kursübersicht öffnen";
             button.className = "chat-option";
-            button.onclick = () => handleChatOption("kursuebersichtS");
+            button.onclick = () => handleChatOption("kursuebersichtS_TEST");
             const chatOptions = document.getElementById("chat-options");
             chatOptions.appendChild(button);
         }, 1000);
@@ -188,6 +191,9 @@ function handleChatOption(action) {
     }
     else if (action == "kursuebersichtS") {
         window.location.href = "progUebersichtS.html";
+    }
+    else if (action == "kursuebersichtS_TEST") {
+        window.location.href = "progUebersichtS_TEST.html";
     }
     else if (action == "kursuebersichtT") {
         window.location.href = "progUebersichtT.html";
