@@ -291,6 +291,17 @@
             alert('Bewertung wird heruntergeladen...');
         });
     }
+
+    function checkExerciseStatus() {
+        const exerciseStatus = sessionStorage.getItem("exerciseUpload");
+    
+        if (exerciseUpload === "true") {
+            document.getElementById('user-progress').style.width = '100%';
+
+            document.querySelector('.group-progress .progress-fill').style.width = '100%';
+            document.querySelector('.group-progress small').textContent = '3 von 3 Abgaben completed';
+        }
+    }
 </script>
 </body>
 </html>

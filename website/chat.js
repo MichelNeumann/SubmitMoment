@@ -87,6 +87,9 @@ const chatDataByPage = {
             button.onclick = () => handleChatOption("kursuebersichtT");
             const chatOptions = document.getElementById("chat-options");
             chatOptions.appendChild(button);
+
+            sessionStorage.setItem("correctionUploaded", "true");
+            checkCorrectionStatus();
         }, 1000);
       }
     };
@@ -127,6 +130,9 @@ const chatDataByPage = {
             button.onclick = () => handleChatOption("kursuebersichtS_TEST");
             const chatOptions = document.getElementById("chat-options");
             chatOptions.appendChild(button);
+
+            sessionStorage.setItem("exerciseUploaded", "true");
+            checkExerciseStatus();
         }, 1000);
       }
     };

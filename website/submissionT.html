@@ -264,7 +264,8 @@
 </div>
 
 
-<script src="chat.js">
+<script src="chat.js"></script>
+<script>
     document.querySelector('.back-button').addEventListener('click', () => {
         history.back();
     });
@@ -295,6 +296,37 @@
             alert('Korrektur erfolgreich hochgeladen!');
         }
     }
+
+    function checkCorrectionStatus() {
+      const correctionStatus = sessionStorage.getItem("correctionUploaded");
+    
+      if (correctionStatus === "true") {
+        const groups = document.querySelectorAll('.group');
+        groups.forEach(group => {
+            const groupName = group.querySelector('.group-name').textContent.trim();
+            if (groupName === "Gruppe 2") {
+                const statusBadge = group.querySelector('.group-status');
+                const uploadButton = group.querySelector('.upload-button');
+
+                if (statusBadge) {
+                    statusBadge.className = 'group-status status-graded';
+                    statusBadge.textContent = 'Bewertet';
+                }
+
+                if (uploadButton) {
+                    uploadButton.className = 'upload-button button-disabled';
+                    uploadButton.textContent = 'Korrektur bereits hochgeladen';
+                    uploadButton.onclick = function (e) {
+                        e.preventDefault();
+                    };
+                }
+            }
+        });
+    }
+}
+  checkCorrectionStatus();
+  setInterval(checkCorrectionStatus, 1000);
+
 </script>
 </body>
 </html>
