@@ -273,7 +273,8 @@
     document.querySelectorAll('.download-button:not(.button-disabled)').forEach(button => {
         button.addEventListener('click', function () {
             const groupName = this.closest('.group').querySelector('.group-name').textContent;
-            alert(`Lade Abgabe von ${groupName} herunter...`);
+            var url="../database/group_2_task_3.zip";
+            window.open(url, '_blank');
         });
     });
 
