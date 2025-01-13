@@ -23,7 +23,7 @@
             justify-content: center;
             padding: 1rem;
             background-color: #f8f9fa;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .exercise-title {
@@ -140,7 +140,7 @@
             margin-top: 2rem;
         }
 
-        .upload-button, .download-button {
+        .upload-button, .download-button, .rollback-button {
             padding: 0.8rem 1.5rem;
             border-radius: 4px;
             font-weight: 500;
@@ -150,6 +150,13 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        .upload-button.uploaded {
+            background-color: #6c757d;
+            color: white;
+            pointer-events: none;
+            cursor: default;
         }
 
         .upload-button {
@@ -162,7 +169,7 @@
         }
 
         .download-button {
-            background-color: #28a745;
+            background-color: #6c757d;
             color: white;
         }
 
@@ -171,8 +178,9 @@
             cursor: not-allowed;
         }
 
-        .download-button:not(:disabled):hover {
-            background-color: #218838;
+        .rollback-button {
+            background-color: #dc3545;
+            color: white;
         }
 
         input[type="file"] {
@@ -186,8 +194,7 @@
     </script>
 </head>
 <body data-page="student-submission">
-    <input type="file" id="file-upload" style="display: none;" accept=".zip" />
-</body>
+<input type="file" id="file-upload" style="display: none;" accept=".zip"/>
 <header class="header">
     <button class="back-button" onclick="swapPageUebersicht_T()">←</button>
     <div class="title">Welcome to Submit Moment
@@ -245,6 +252,10 @@
         <button class="download-button" disabled id="download-button">
             <span>Bewertung herunterladen</span>
         </button>
+
+        <button class="rollback-button" id="rollback-button" style="display: none;">
+            <span>Abgabe zurücknehmen</span>
+        </button>
     </div>
 </main>
 
@@ -263,7 +274,6 @@
     </div>
 </div>
 
-
 <script src="chat.js"></script>
 
 <script>
@@ -278,9 +288,29 @@
             document.querySelector('.group-progress .progress-fill').style.width = '100%';
             document.querySelector('.group-progress small').textContent = '3 von 3 Abgaben completed';
 
+            document.getElementById('rollback-button').style.display = 'inline-block';
+            document.getElementById('download-button').disabled = false;
+
+
+            document.querySelector('.upload-button').classList.add('uploaded');
+
             alert('ZIP-Datei erfolgreich hochgeladen!');
         }
     }
+
+    document.getElementById('rollback-button').addEventListener('click', () => {
+        document.getElementById('zip-upload').value = '';
+        document.getElementById('user-progress').style.width = '0%';
+        document.querySelector('.group-progress .progress-fill').style.width = '66.67%';
+        document.querySelector('.group-progress small').textContent = '2 von 3 Abgaben completed';
+
+        document.getElementById('rollback-button').style.display = 'none';
+        document.getElementById('download-button').disabled = false;
+
+        document.querySelector('.upload-button').classList.remove('uploaded');
+
+        alert('Abgabe zurückgenommen!');
+    });
 
     const hasEvaluation = false;
     const downloadButton = document.getElementById('download-button');
@@ -294,12 +324,14 @@
 
     function checkExerciseStatus() {
         const exerciseStatus = sessionStorage.getItem("exerciseUpload");
-    
+
         if (exerciseUpload === "true") {
             document.getElementById('user-progress').style.width = '100%';
 
             document.querySelector('.group-progress .progress-fill').style.width = '100%';
             document.querySelector('.group-progress small').textContent = '3 von 3 Abgaben completed';
+
+
         }
     }
 </script>
