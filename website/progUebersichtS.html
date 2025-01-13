@@ -22,7 +22,7 @@
             justify-content: center;
             padding: 1rem;
             background-color: #f8f9fa;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .back-button {
@@ -76,7 +76,7 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .submissions-table th,
@@ -152,6 +152,7 @@
         function swapPageUebersicht() {
             window.location.href = 'uebersichtS.html';
         }
+
         function swapPageSubmission() {
             window.location.href = 'submissionS.html';
         }
@@ -162,7 +163,7 @@
 <header class="header">
     <button class="back-button" onclick="swapPageUebersicht()">←</button>
     <div class="title">Welcome to Submit Moment
-        <span class="student-badge">Student</span>
+        <span class="student-badge" onclick="location.href='uebersichtT.html'">Student</span>
     </div>
 </header>
 
@@ -252,7 +253,7 @@
 </div>
 
 
-<script src = "chat.js">
+<script src="chat.js">
 
 </script>
 </body>
