@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="chat.css">
     <link rel="stylesheet" href="uebersicht.css">
     <style>
-        {
-            margin: 0
-        ;
-            padding: 0
-        ;
-            box-sizing: border-box
-        ;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -40,7 +37,6 @@
             color: #333;
         }
 
-
         .title {
             font-size: 1.2rem;
             font-weight: bold;
@@ -55,10 +51,44 @@
             margin-left: 1rem;
         }
 
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
 
+        .course-link {
+            text-decoration: none;
+            color: #333;
+            flex-grow: 1;
+        }
+
+        .registration-status {
+            margin-left: 1rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .registered {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .not-registered {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .separator {
+            height: 2px;
+            background-color: #3ea39e;
+            margin: 0.5rem 0;
+        }
     </style>
     <script>
-
         function swapPageProg() {
             window.location.href = 'progUebersichtS.html';
         }
@@ -81,21 +111,28 @@
     <ul class="course-list">
         <li class="course-item">
             <a href="#" class="course-link">Mathematik II - Grundlagen der Analysis</a>
+            <span class="registration-status registered">Registriert</span>
         </li>
         <li class="course-item">
             <a onclick="swapPageProg()" class="course-link">Programmierung - Einführung in C</a>
+            <span class="registration-status registered">Registriert</span>
         </li>
         <li class="course-item">
             <a href="#" class="course-link">Datenbanken - SQL Grundlagen</a>
+            <span class="registration-status registered">Registriert</span>
+        </li>
+        <div class="separator"></div>
+        <li class="course-item">
+            <a href="#" class="course-link n_registered">GMCI - HTML, CSS & JavaScript</a>
+            <span class="registration-status not-registered">Nicht registriert</span>
         </li>
         <li class="course-item">
-            <a href="#" class="course-link">GMCI - HTML, CSS & JavaScript</a>
+            <a href="#" class="course-link n_registered">Datenstrukturen und Algorithmen</a>
+            <span class="registration-status not-registered">Nicht registriert</span>
         </li>
         <li class="course-item">
-            <a href="#" class="course-link">Datenstrukturen und Algorithmen</a>
-        </li>
-        <li class="course-item">
-            <a href="#" class="course-link">Grundlagen der Betriebssysteme</a>
+            <a href="#" class="course-link n_registered">Grundlagen der Betriebssysteme</a>
+            <span class="registration-status not-registered">Nicht registriert</span>
         </li>
     </ul>
 </main>
@@ -104,30 +141,27 @@
 <div class="chat-window">
     <div class="chat-header">Chat Michael Moment</div>
     <div class="chat-content">
-        <div id="chat-messages">
-        </div>
+        <div id="chat-messages"></div>
     </div>
-    <div id="chat-options">
-    </div>
+    <div id="chat-options"></div>
     <div class="chat-input">
         <input type="text" placeholder="Nachricht eingeben...">
         <button>Senden</button>
     </div>
 </div>
 
-
-<script src="chat.js">
+<script src="chat.js"></script>
+<script>
     document.querySelector('.back-button').addEventListener('click', () => {
         history.back();
     });
 
-    document.querySelectorAll('.course-link').forEach(link => {
+    document.querySelectorAll('.n_registered').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('Kurs wird geladen: ' + e.target.textContent);
+            alert('Sie sind nicht im Kurs: ' + e.target.textContent + ' registriert.');
         });
     });
 </script>
-
 </body>
 </html>
